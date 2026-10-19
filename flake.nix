@@ -21,6 +21,7 @@
             stdenv.mkDerivation {
               name = "cpp-template";
               src = ./.;
+              dontWrapQtApps = true; # FIXME!
               buildInputs = [
                 catch2_3
                 jrl-cmakemodulesv2
