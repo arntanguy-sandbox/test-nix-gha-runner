@@ -7,7 +7,7 @@ include(cmake/get-jrl-cmakemodules.cmake)
 
 project(
     cpp-template
-    VERSION 1.0.0 
+    VERSION 1.0.0
     DESCRIPTION ""
     HOMEPAGE_URL "https://github.com/${PROJECT_NAME}"
     LANGUAGES CXX
@@ -46,15 +46,17 @@ if(BUILD_TESTING)
 endif()
 
 # ------------
-# BUILD 
+# BUILD
 # ------------
 add_library(${PROJECT_NAME} SHARED src/cpp-template.cpp)
 target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_17)
-target_link_libraries(
-${PROJECT_NAME}
-PUBLIC Eigen3::Eigen
+target_link_libraries(${PROJECT_NAME} PUBLIC Eigen3::Eigen)
+target_include_directories(
+    ${PROJECT_NAME}
+    PUBLIC
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+        $<INSTALL_INTERFACE:include>
 )
-target_include_directories(${PROJECT_NAME} PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include> $<INSTALL_INTERFACE:include>)
 jrl_target_headers(${PROJECT_NAME} PUBLIC HEADERS include/${PROJECT_NAME}/cpp-template.h BASE_DIRS include)
 jrl_add_export_component(NAME ${PROJECT_NAME} TARGETS ${PROJECT_NAME})
 
