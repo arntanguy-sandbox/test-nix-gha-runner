@@ -12,11 +12,9 @@ on:
       - main
 jobs:
   nix:
-    runs-on: "${{ matrix.os }}"
+    runs-on: [self-hosted, nix]
     strategy:
       fail-fast: false
-      matrix:
-        os: [self-hosted]
     steps:
       - uses: actions/checkout@v6
       - uses: cachix/install-nix-action@v31
