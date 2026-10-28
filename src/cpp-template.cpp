@@ -2,9 +2,8 @@
 
 namespace cpp_template {
 
-Eigen::Matrix3d multiplyIdentity(double scale)
-{
-        return scale * Eigen::Matrix3d::Identity();
+Eigen::Matrix3d multiplyIdentity(double scale) {
+  return scale * Eigen::Matrix3d::Identity();
 }
 
-} // !namespace cpp_template
+}  // namespace cpp_template
